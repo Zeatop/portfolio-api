@@ -30,9 +30,9 @@ pipeline {
         stage('Update K8s Secret') {
             steps {
                 withCredentials([
-                    string(credentialsId: 'resend-api-key', variable: 'RESEND_API_KEY'),
-                    string(credentialsId: 'mail-from',      variable: 'MAIL_FROM'),
-                    string(credentialsId: 'mail-to',        variable: 'MAIL_TO'),
+                    string(credentialsId: 'SENDER_API_KEY', variable: 'RESEND_API_KEY'),
+                    string(credentialsId: 'MAIL_FROM',      variable: 'MAIL_FROM'),
+                    string(credentialsId: 'MAIL_TO',        variable: 'MAIL_TO'),
                 ]) {
                     sh '''
                         kubectl create secret generic portfolio-api-secrets \
