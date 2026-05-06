@@ -47,7 +47,7 @@ pipeline {
 
         stage('Deploy to K8s') {
             steps {
-                sh "sed -i 's|${REGISTRY}/${IMAGE}:latest|${REGISTRY}/${IMAGE}:${TAG}|' k8s/deployment.yaml"
+                sh "sed -i 's|${REGISTRY}/${IMAGE}:latest|${REGISTRY}/${IMAGE}:${TAG}|' k8s/deployment.yml"
                 sh 'kubectl apply -f k8s/deployment.yaml'
                 sh 'kubectl rollout status deployment/portfolio-api --timeout=120s'
             }
